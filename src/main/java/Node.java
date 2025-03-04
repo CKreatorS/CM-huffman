@@ -17,4 +17,7 @@ public class Node implements Comparable<Node> {
     public int compareTo(Node n) {
         return Integer.compare(this.frequency, n.frequency);
     }
+
+    public void setFrequency(Node left, Node right) {
+    }
 }
