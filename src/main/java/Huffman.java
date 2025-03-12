@@ -30,14 +30,14 @@ public class Huffman {
         for(int i = 0; i < text.length(); i++ ){
             char c = text.charAt(i);
             // Never seen character before
-            if(stuff.get(c) == null) {
-                stuff.put(c, 1);
+            if(frequencies.get(c) == null) {
+                frequencies.put(c, 1);
             } else {
-                stuff.put(c, stuff.get(c) + 1);
+                frequencies.put(c, frequencies.get(c) + 1);
             }
         }
 
-        for(Entry<Character, Integer> entry : stuff.entrySet()) {
+        for(Entry<Character, Integer> entry : frequencies.entrySet()) {
             System.out.println("key:" + entry.getKey() + " value:" + entry.getValue()); 
         }
 
