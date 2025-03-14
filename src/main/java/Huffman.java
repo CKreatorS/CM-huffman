@@ -24,8 +24,7 @@ public class Huffman {
      */
     private void populateFrequenciesMap() {
         
-        frequencies = new HashMap<>();
-        Map<Character, Integer> frequencies = new HashMap<Character, Integer>(); 
+        frequencies = new HashMap<>(); 
 
         for(int i = 0; i < text.length(); i++ ){
             char c = text.charAt(i);
@@ -35,10 +34,6 @@ public class Huffman {
             } else {
                 frequencies.put(c, frequencies.get(c) + 1);
             }
-        }
-
-        for(Entry<Character, Integer> entry : frequencies.entrySet()) {
-            System.out.println("key:" + entry.getKey() + " value:" + entry.getValue()); 
         }
 
         // TODO 
@@ -56,6 +51,11 @@ public class Huffman {
 
         // TODO
         // For every entry in the frequencies HashMap, create a new Leaf and add it to the queue.
+        for(Entry<Character, Integer> entry : frequencies.entrySet()) {
+            // System.out.println("key:" + entry.getKey() + " value:" + entry.getValue());
+            Leaf leaf = new Leaf(entry.getKey(), entry.getValue()); 
+            queue.add(leaf);
+        }
 
         // TODO
         // While the queue's size is greater than 1, create a new Node using the two Nodes with lowest frequencies.
