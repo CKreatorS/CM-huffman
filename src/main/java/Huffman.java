@@ -61,6 +61,14 @@ public class Huffman {
         // While the queue's size is greater than 1, create a new Node using the two Nodes with lowest frequencies.
         // HINT: use queue.poll() to get the nodes with lowest frequncies.
 
+            if (queue.size() > 1){
+                Node least1 = queue.poll(); 
+                Node least2 = queue.poll(); 
+                Node combined = new Node(least1.frequency + least2.frequency);
+                combined.right = least1; 
+                queue.add(combined); 
+        }
+
         // TODO
         // Set the root of the tree equal to the final Node in the queue (the greatest, by definition).
 
