@@ -15,6 +15,14 @@ public class Node implements Comparable<Node> {
         this.right = right; 
     }
 
+    public Node getLeftNode() {
+        return left; 
+    }
+
+    public Node getRightNode() {
+        return right; 
+    }
+
     /*
      * TODO
      * The Node class should have two constructors. The first should accept an int frequency and

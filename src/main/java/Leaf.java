@@ -6,6 +6,10 @@ public class Leaf extends Node {
         this.character = character; 
     }
 
+    public char getCharacter() {
+        return character; 
+    }
+
     /*
      * TODO
      * The Leaf class should have a constructor which accepts a char character and an int frequency.

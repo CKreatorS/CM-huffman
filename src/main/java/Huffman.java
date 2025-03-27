@@ -63,14 +63,14 @@ public class Huffman {
 
             if (queue.size() > 1){
                 Node least1 = queue.poll(); 
-                Node least2 = queue.poll(); 
-                Node combined = new Node(least1.frequency + least2.frequency);
-                combined.right = least1; 
-                queue.add(combined); 
+                Node least2 = queue.poll();  
+                queue.add(new Node(least1, least2)); 
         }
 
         // TODO
         // Set the root of the tree equal to the final Node in the queue (the greatest, by definition).
+
+
 
         // TODO
         // Call generateCodes() to populate the codes HashMap by providing the root Node and an empty String
