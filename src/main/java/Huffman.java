@@ -70,12 +70,14 @@ public class Huffman {
         // TODO
         // Set the root of the tree equal to the final Node in the queue (the greatest, by definition).
 
+        root = queue.poll(); 
+
 
 
         // TODO
         // Call generateCodes() to populate the codes HashMap by providing the root Node and an empty String
         // for the initial code value.
-
+        generateCodes(root, "");
         return getEncodedText();
     }
 
@@ -89,10 +91,18 @@ public class Huffman {
         // TODO
         // If the Node is an instance of Leaf, add the Leaf's character as a key in the codes HashMap, the
         // code String as its value, and return.  
+        if(node instanceof Leaf){
+            Leaf key = (Leaf) node; 
+            codes.put(key.getCharacter(), code); 
+            return; 
+        }
 
         // TODO
         // Recursively call generateCodes with the left and right Nodes. Add a "0" to the left Node code 
         // and a "1" to the right Node code when making recursive calls.
+
+        generateCodes(node.getLeftNode(), code + "0");
+        generateCodes(node.getRightNode(), code + "1");
     }
 
     /*
@@ -104,7 +114,10 @@ public class Huffman {
         // TODO
         // For every char in the original String text, use the char as a key to obtain a Huffman code from
         // the codes HashMap. Use builder.append() to add the Huffman code to the result String.
-       
+
+        for(char c : text.toCharArray()){
+            builder.append(codes.get(c));
+        }
         return builder.toString();
     }
 
@@ -124,7 +137,17 @@ public class Huffman {
          *    - Otherwise, navigate right by pointing the current Node to the current's right Node.
          *    - If the current Node is a Leaf, append the character to the StringBuilder and reset current Node to root.
          */
-       
+         for(char ch : encoded.toCharArray()) {
+            Node current = root; 
+            if (ch == '0') {
+                current.getLeftNode(); 
+            } else {
+                current.getRightNode(); 
+            }
+            if(current.getLeftNode() == null && current.getRightNode() == null) {
+                current = root; 
+            }
+         }
         return builder.toString();
     }
 
