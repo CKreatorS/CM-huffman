@@ -6,37 +6,36 @@ public class Main {
 
     public static void main(String[] args) {
 
-        System.out.println("result: " + decorateFestival(7, ""));
+        Huffman huffman = new Huffman("aaaaabbbbcccdde");
+
+        String encodedText = huffman.encode();
+        System.out.println(encodedText);
+
+        huffman.printCodes();
+
+        String originalText = huffman.decode(encodedText);
+        System.out.println(originalText);
+
+        // System.out.println("result: " + decorateFestival(7, ""));
 
     }
+}
 
-    public static String decorateFestival(int length, String s) {
+    // public static String decorateFestival(int length, String s) {
 
-        if(length == 0) {
-            return s;
-        } 
+    //     if(length == 0) {
+    //         return s;
+    //     } 
         
-        if(length % 2 == 0){
-            s += "🌱"; 
-        } else {
-            s += "🌸"; 
-        }
+    //     if(length % 2 == 0){
+    //         s += "🌱"; 
+    //     } else {
+    //         s += "🌸"; 
+    //     }
 
-        System.out.println("length: " + length +  " " + s);
+    //     System.out.println("length: " + length +  " " + s);
 
-        return decorateFestival(length - 1, s);
-
-
-
-    //     Huffman huffman = new Huffman("aaaaabbbbcccdde");
-
-    //     String encodedText = huffman.encode();
-    //     System.out.println(encodedText);
-
-    //     huffman.printCodes();
-
-    //     String originalText = huffman.decode(encodedText);
-    //     System.out.println(originalText);
+    //     return decorateFestival(length - 1, s);
 
     //     String text = "aaaabbbccd"; 
     //     Map<Character, Integer> stuff = new HashMap<Character, Integer>(); 
@@ -54,5 +53,3 @@ public class Main {
     //     for(Entry<Character, Integer> entry : stuff.entrySet()) {
     //         System.out.println("key:" + entry.getKey() + " value:" + entry.getValue()); 
     //     }
-    }
-}

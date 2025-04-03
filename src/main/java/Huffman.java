@@ -70,9 +70,7 @@ public class Huffman {
         // TODO
         // Set the root of the tree equal to the final Node in the queue (the greatest, by definition).
 
-        root = queue.poll(); 
-
-
+        this.root = queue.poll(); 
 
         // TODO
         // Call generateCodes() to populate the codes HashMap by providing the root Node and an empty String
@@ -91,9 +89,9 @@ public class Huffman {
         // TODO
         // If the Node is an instance of Leaf, add the Leaf's character as a key in the codes HashMap, the
         // code String as its value, and return.  
-        if(node instanceof Leaf){
-            Leaf key = (Leaf) node; 
-            codes.put(key.getCharacter(), code); 
+        if (node instanceof Leaf) {
+            Leaf leaf = (Leaf) node; 
+            codes.put(leaf.getCharacter(), code); 
             return; 
         }
 
@@ -115,7 +113,7 @@ public class Huffman {
         // For every char in the original String text, use the char as a key to obtain a Huffman code from
         // the codes HashMap. Use builder.append() to add the Huffman code to the result String.
 
-        for(char c : text.toCharArray()){
+        for(char c : text.toCharArray()) {
             builder.append(codes.get(c));
         }
         return builder.toString();
@@ -140,11 +138,12 @@ public class Huffman {
          for(char ch : encoded.toCharArray()) {
             Node current = root; 
             if (ch == '0') {
-                current.getLeftNode(); 
+                current = current.getLeftNode(); 
             } else {
-                current.getRightNode(); 
+                current = current.getRightNode(); 
             }
-            if(current.getLeftNode() == null && current.getRightNode() == null) {
+            if (current.getLeftNode() == null && current.getRightNode() == null) {
+                
                 current = root; 
             }
          }
